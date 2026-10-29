@@ -1,0 +1,285 @@
+{
+  "appName": "Slots",
+  "contactEmail": "info@appmac.fr",
+  "tagline": "Save your workspace with one click, restore it just as fast.",
+  "description": "<h2>What Is Slots?</h2>Satisfied about a workspace? All windows positioned and apps open the way you like? One click of the mouse saves that setup as a Slot.<br>Select it later, and everything is restored: apps relaunch, windows land back where they were, and for a few supported apps, even the same documents and tabs reopen.<br><br><h2>Real macOS, Not Electron</h2>Slots is built natively in Swift 6 and SwiftUI. No huge memory-consuming Electron application.<br>Just a small, fast menu bar app that behaves like a proper Mac citizen, with no Dock icon and no main window.<br><br><h2>Content-Aware Restore</h2>For a range of popular browsers, file managers, and developer tools, Slots doesn't just reposition windows. It reopens the same tabs, folders, and source files.<br>Any other scriptable app falls back to reopening its documents via AppleScript, or to plain window positioning if that isn't supported.<br><br><h2>One Slot Per Desktop</h2>Slots captures the Desktop you're on. Tie a Slot to that Desktop, and selecting it from anywhere switches there and rebuilds just that Desktop. Your other Desktops and the apps on them are left alone.<br><br><h2>Your Whole Setup In One Go</h2>Pin one Slot per Desktop, and Restore All Pinned Desktops restores them one after another, then brings you back where you started.<br>Slots does the same every time it starts, and keep specific apps off-limits with the ignore list so restoring never quits them.<br><br><h2>Quick to Reach</h2>Put Slots in groups to keep a long list tidy, and reach every Slot with a single key: 1 to 9 and 0, then A to Z. A second keyboard shortcut captures a new Slot from anywhere.",
+  "accentColor": "#0A84FF",
+  "downloadURL": "https://slots.appmac.fr/update/download/",
+  "websiteURL": "https://slots.appmac.fr",
+  "domainLinkLabel": "AppMac",
+  "domainLinkURL": "https://appmac.fr",
+  "language": "en,de,fr,nl",
+  "videoTitle": "See it in action, all via the keyboard",
+  "gallery": [
+  	{ "image": "introduction.png", "caption": "Slots - Introduction" },
+  	{ "image": "introduction-2.png", "caption": "Slots - Introduction" },
+    { "image": "settings-1.webp", "caption": "Settings > General" },
+    { "image": "settings-2.png", "caption": "Settings > Shortcuts" },
+    { "image": "settings-3.webp", "caption": "Settings > Ignore" },
+    { "image": "settings-4.webp", "caption": "Settings > Backup" }
+  ],
+  "features": [
+    {
+      "icon": "💾",
+      "title": "Capture Current Layout",
+      "description": "Save every open window (app, position, and size) as a named Slot with one click, or with your own keyboard shortcut from anywhere."
+    },
+    {
+      "icon": "🔁",
+      "title": "One-Click Restore",
+      "description": "Select a Slot and Slots relaunches missing apps and repositions every window to match."
+    },
+    {
+      "icon": "📄",
+      "title": "Content-Aware Restore",
+      "description": "Popular browsers, file managers, and developer tools reopen the same tabs, folders, and files, not just window positions."
+    },
+    {
+      "icon": "👁️",
+      "title": "Preview Before You Restore",
+      "description": "Choose Show Details in any Slot's ••• menu to see exactly which apps, tabs, and files it will bring back, and which Desktop it was captured on.<br>An orange warning marks folders, projects, and documents that no longer exist on disk.<br>Captured a window you don't want? Click the minus button next to it to remove it from the Slot.<br>Click a window's tab count to list its tabs, folders, or files, and remove single ones the same way.<br>If that Safari, Chrome, or Finder window is open, the tab closes there right away too, and Undo opens it again."
+    },
+    {
+      "icon": "🖥️",
+      "title": "Desktop-Aware Slots",
+      "description": "Every new Slot belongs to the Desktop it was captured on. Selecting it switches to that Desktop and rebuilds only that one, keeping windows that already show the right tabs or folders.<br>A numbered badge in the list shows which Desktop each Slot belongs to, and the Slots for the Desktop you're on are shown in bold.<br>When the windows on screen match a Slot, its Desktop number is filled in with your accent colour, so you see at a glance which Slot is showing.<br>Choose Move to Desktop in a Slot's ••• menu to give it another Desktop: Slots closes its windows on the old one and rebuilds it on the new one.<br>Switch the list to This Desktop to see only the Slots for the Desktop you're on.<br>The Slots icon in the menu bar shows the number of the Desktop you're on, and the Go to pop-up menu at the bottom of the menu takes you straight to any other Desktop without restoring anything. It lists the Slots on each Desktop, and Option-1, Option-2 and so on switch from the keyboard.<br>When macOS is set to rearrange Desktops automatically, Slots offers to turn that off, so your Slots stay on the right Desktop."
+    },
+    {
+      "icon": "↩️",
+      "title": "Back to Previous Layout",
+      "description": "Restored the wrong Slot? Slots takes a snapshot of the Desktop right before every restore, so one click on Back to Previous Layout rebuilds it the way it was."
+    },
+    {
+      "icon": "➕",
+      "title": "Restore Here, Keep Windows",
+      "description": "Click the Restore Here button on a Slot's row, press R on the selected row, or choose Restore Here, Keep Windows in its ••• menu to open its windows on the Desktop you're on, right next to what's already there.<br>Nothing is closed, no apps are quit, and windows that already show the Slot's tabs or folders are simply moved into place."
+    },
+    {
+      "icon": "⚠️",
+      "title": "See What Didn't Come Back",
+      "description": "When some windows can't be restored, click the message at the bottom of the menu to see exactly which ones: each app with its tabs, folders, project, or window title.<br>Click Retry to try again for just those windows, without closing anything that's already open."
+    },
+    {
+      "icon": "✏️",
+      "title": "Rename Slots",
+      "description": "Give a saved Slot a new name at any time, right from the popover."
+    },
+    {
+      "icon": "📑",
+      "title": "Duplicate a Slot",
+      "description": "Want a variant of a Slot, say without Safari? Choose Duplicate in its ••• menu, rename the copy, and remove what you don't need in Show Details. No need to capture again."
+    },
+    {
+      "icon": "🏷️",
+      "title": "Slot Icons",
+      "description": "Pick from more than 300 SF Symbols, in 12 categories and with search, to give each Slot a distinctive icon next to its name, shown in your accent colour.<br>Click the icon, or choose Change Icon… in the ••• menu, to change it.<br>Rest the pointer on the icon to see the Slot's window layout: every screen it uses, with each window and the app it belongs to.<br>Prefer a tiny map of the windows over an icon? Choose Window Layout as the Slot graphic in Settings → General."
+    },
+    {
+      "icon": "♻️",
+      "title": "Replace a Slot",
+      "description": "Recapture your current window layout into an existing Slot. No need to delete and start over when your setup changes slightly.<br>Replace, Close, and Delete all ask for a quick confirm click before they act, and Delete, Replace, and removing a window or tab can be undone with one click until you close the menu."
+    },
+    {
+      "icon": "✖️",
+      "title": "Close a Slot's Windows",
+      "description": "Done with a task? Click the close button on a Slot's row to close that Slot's windows on the current Desktop. The apps keep running, so their windows on other Desktops stay open."
+    },
+    {
+      "icon": "↕️",
+      "title": "Drag to Reorder",
+      "description": "Drag a Slot up or down to reorder the list, and a line shows where it will land. Handy, since restore shortcuts follow that same order."
+    },
+    {
+      "icon": "🗂️",
+      "title": "Slot Groups",
+      "description": "Keep a long list tidy by putting Slots in groups, for example one for all your development setups.<br>A group is a single row that unfolds its Slots right below it, and only one group is open at a time.<br>Choose Group ▸ New Group… in a Slot's ••• menu to start one, and Ungroup in the group's ••• menu to undo it without losing a Slot.<br>With the keyboard, open Slots with your shortcut, press the group's number or letter to open it, then a Slot's number or letter to restore it. Escape closes the group again."
+    },
+    {
+      "icon": "🪄",
+      "title": "Shortcuts, Siri, and Focus",
+      "description": "Restore Slot, Restore All Pinned Desktops, and Capture Slot are actions in the Shortcuts app, so you can build them into your own automations, or just say \"Restore Home in Slots\".<br>Add a Slots filter to a Focus and turning on that Focus restores the Slot you picked."
+    },
+    {
+      "icon": "⌨️",
+      "title": "Global Shortcut",
+      "description": "Open the Slots menu from anywhere with your own keyboard shortcut, set in Settings → Shortcuts, then just press 1–9 or 0 to instantly restore that Slot.<br>Further down the list, Slots get the letters A to Z, shown next to each name.<br>Rather look before you restore? Settings → Shortcuts can make the keys only select the Slot, and Return restores it.<br>Selected a Slot with the arrow keys? Press R for Restore Here, Keep Windows, X to close its windows, or P to pin or unpin it. Or use the left and right arrows to move to the buttons on its row, and press Return. Escape takes the highlight off again.<br>Set a second shortcut to capture a new Slot from anywhere: Slots opens and starts capturing right away."
+    },
+    {
+      "icon": "🫥",
+      "title": "Hide the Menu Bar Icon",
+      "description": "Once you've set a shortcut to open Slots in Settings → Shortcuts, you can hide the menu bar icon entirely in Settings → General.<br>Open Slots with the shortcut or by launching it again from Finder."
+    },
+    {
+      "icon": "🔑",
+      "title": "Restore All Pinned Desktops",
+      "description": "Pin one Slot per Desktop. Choose Restore All Pinned Desktops in the ≡ menu and Slots restores the pinned Slot of each Desktop in turn, then returns you to the one you started on.<br>Pinned Slots are also restored whenever Slots starts, and Slots itself can launch at login."
+    },
+    {
+      "icon": "🔌",
+      "title": "Monitor Triggers",
+      "description": "Plug in your monitor at your desk and Slots offers to bring back your desk layout. Unplug it and it offers your laptop layout.<br>In Settings → General, choose a Slot or Restore All Pinned Desktops for Monitor connected and Monitor disconnected.<br>Slots asks with a notification first and only restores when you click Restore."
+    },
+    {
+      "icon": "🚫",
+      "title": "Ignore List",
+      "description": "Mark apps to always leave running. Restoring a Slot never launches or quits them, only repositions them if already open."
+    },
+    {
+      "icon": "📤",
+      "title": "Backup & Restore",
+      "description": "Export every Slot, the pinned Slots, and your ignore list to a single file, and restore it later with a confirmation before anything's overwritten."
+    },
+    {
+      "icon": "⚡",
+      "title": "Native Swift, Not Electron",
+      "description": "Built with Swift 6 and SwiftUI, with the Liquid Glass look of macOS Tahoe and later: lightweight and fast, with none of the overhead of a bundled browser runtime."
+    },
+    {
+      "icon": "🧭",
+      "title": "Guided Introduction",
+      "description": "A short tour on first launch walks you through capturing, restoring, Desktops, tabs and documents, and shortcuts.<br>Its last page shows Accessibility and Screen Recording access as granted or not at a glance.<br>Open it again any time from ≡ ▸ Show Introduction."
+    }
+  ],
+  "requirements": [
+    "macOS 26 Tahoe or later",
+    "Accessibility permission (to reposition windows)",
+    "Screen Recording permission (to list windows for capture; no screen content is recorded)"
+  ],
+  "faqs": [
+    {
+      "group": "About",
+      "items": [
+        {
+          "q": "Is this an Electron app?",
+          "a": "No. Slots is written natively in Swift 6 and SwiftUI, so it's lightweight and fast instead of bundling a browser runtime."
+        },
+        {
+          "q": "Does restoring a Slot bring back my tabs and documents too?",
+          "a": "For a range of popular browsers (Safari, Chrome, Brave, Edge, Vivaldi, and Firefox), file managers, and developer tools such as Xcode, Terminal, and Visual Studio Code, yes.<br>Slots reopens the same tabs, folders, and files, not just window positions. VS Code windows come back with their folder or workspace, and VS Code reopens its own open files.<br>Other scriptable apps fall back to reopening their documents via AppleScript, or plain window positioning if that isn't supported."
+        }
+      ]
+    },
+    {
+      "group": "Tips",
+      "items": [
+        {
+          "q": "Can I add icons to my Slots?",
+          "a": "Yes. Choose Change Icon… in a Slot's ••• menu, or click a Slot's icon in the list, to pick from more than 300 SF Symbols in 12 categories, or type a word like \"work\" or \"travel\" to search them. <br><img src=\"images/icon.webp\" alt=\"The icon picker\"><br>You can also pick one while naming a new Slot. No need to know a symbol's name yourself."
+        },
+        {
+          "q": "Do Slots capture windows from all my desktop Spaces?",
+          "a": "No. A Slot only captures windows on the Desktop you're currently on. This is handy: keep a separate Slot per Desktop (e.g. one for a coding setup, another for email and chat).<br>New Slots have \"Restore on Desktop N Only\" turned on, so selecting one switches to that Desktop first and rebuilds only that one, leaving your other Desktops alone.<br>Windows that already show the right tabs or folders stay open; other apps' windows on that Desktop are closed, but the apps keep running."
+        },
+        {
+          "q": "I updated from an earlier version. Why do my Slots now show a 1?",
+          "a": "Slots saved before Desktops were recorded are assigned to Desktop 1, with \"Restore on Desktop 1 Only\" turned on. Selecting one now rebuilds only Desktop 1 and leaves your other apps running.<br>To reset your whole Mac as before, turn the option off in the Slot's ••• menu."
+        },
+        {
+          "q": "How does Slots switch to a Slot's Desktop?",
+          "a": "It uses your Mission Control keyboard shortcuts. If \"Switch to Desktop N\" is turned on in System Settings → Keyboard → Keyboard Shortcuts → Mission Control, Slots jumps straight there.<br>Otherwise it steps there with Control-Left/Right Arrow, passing every Desktop in between.<br>When a Desktop has no shortcut yet, for example right after you add one, Slots asks whether to turn it on for you."
+        },
+        {
+          "q": "Why does Slots ask me to turn off automatic Desktop rearranging?",
+          "a": "With \"Automatically rearrange Spaces based on most recent use\" turned on in System Settings → Desktop & Dock → Mission Control, macOS keeps moving your Desktops around, so the Desktop a Slot belongs to can change places and the Slot ends up on the wrong one.<br>Slots offers to turn it off for you. The Dock restarts for a moment, and your Desktops and windows stay where they are.<br>If you chose Not Now, the same button is in Settings → General → Desktops."
+        },
+        {
+          "q": "Can I move a Slot to another Desktop?",
+          "a": "Yes. Choose Move to Desktop in the Slot's ••• menu and pick a Desktop. Slots closes the Slot's windows on its old Desktop, switches to the new one and rebuilds the Slot there.<br>Documents that can be open in only one window, such as an Xcode project, move along too. \"Restore on Desktop N Only\" is turned on for the new Desktop."
+        },
+        {
+          "q": "How do I close a Slot's windows without quitting the apps?",
+          "a": "Click the close button on the Slot's row. Slots closes the windows of that Slot's apps on the current Desktop, after a quick confirm click.<br>From the keyboard, select the Slot with the arrow keys and press X. That closes them right away, without the confirm click.<br>The apps keep running, so their windows on your other Desktops stay open, and other apps aren't touched.<br>For a Slot with \"Restore on Desktop N Only\" turned on, Slots switches to that Desktop first."
+        },
+        {
+          "q": "Why did a window stay open after restoring or closing a Slot?",
+          "a": "Some apps ask before a window closes. When it's a plain confirmation, such as Terminal asking whether to terminate the processes running in a window, Slots answers it for you and the window closes.<br>When an app asks whether to save changes to a document, Slots leaves the window open and doesn't answer, so you never lose unsaved work. Save or discard the changes yourself, then restore again."
+        },
+        {
+          "q": "A Slot captured a window I don't want. Do I have to capture it again?",
+          "a": "No. Choose Show Details in the Slot's ••• menu, click the minus button next to the window, then click Remove to confirm.<br>To remove just one tab, folder, or file, click the window's tab count (for example \"3 tabs\") to list them, and use the minus button next to that one.<br>The last window of a Slot, and the last tab of a window, can't be removed; remove the window or delete the Slot instead."
+        },
+        {
+          "q": "What happens when I restore a Slot without my external monitor?",
+          "a": "Windows that were on a display that isn't connected move onto the main display instead of ending up off-screen.<br>They keep their share of the screen, so a window that filled the left half of the monitor fills the left half of your laptop screen. Reconnect the monitor and restore again to put them back.<br>If you've rearranged your displays, windows follow their display to its new position."
+        },
+        {
+          "q": "Can Slots restore a layout when I connect or disconnect my monitor?",
+          "a": "Yes. In Settings → General → Monitors, choose what to restore for Monitor connected and for Monitor disconnected: a Slot, or Restore All Pinned Desktops.<br>When the monitor changes, Slots shows a notification, and nothing is closed until you click its Restore button (hover over the notification to see it).<br>Afterwards, Back to Previous Layout in the Slots menu undoes the restore.<br>Unplugging one of several monitors doesn't count, and neither does a monitor that briefly drops out while your Mac sleeps."
+        },
+        {
+          "q": "I restored the wrong Slot. Can I go back?",
+          "a": "Yes. Right before a restore from the menu, Slots takes a snapshot of the Desktop it's about to rebuild.<br>Open the Slots menu and click Back to Previous Layout at the bottom, and that Desktop is rebuilt the way it was, with the same apps, windows, tabs, and folders.<br>After Restore All Pinned Desktops, every pinned Desktop comes back. The button stays until your next restore.<br>For a Slot that isn't tied to a Desktop, which resets the whole Mac, only the Desktop you were on comes back."
+        },
+        {
+          "q": "My Slot list is long. Can I see only the Slots for this Desktop?",
+          "a": "Yes. Once a Slot is kept to a Desktop, a This Desktop / All switch appears above the list. This Desktop shows the Slots for the Desktop you're on, plus Slots that aren't kept to any Desktop.<br>The number keys follow the shorter list, and Slots remembers your choice."
+        },
+        {
+          "q": "Can I put my Slots in groups?",
+          "a": "Yes. Choose Group ▸ New Group… in a Slot's ••• menu, give the group a name and, if you like, an icon. Add more Slots with Group in their ••• menu, or take one out with Remove from Group.<br>A group shows as one row: click it to unfold its Slots, and click it again to fold them. Only one group is open at a time.<br>Groups work with the keyboard too. Open Slots with your global shortcut, press the group's number or letter to open it, then press a Slot's number or letter to restore it.<br>Browsing the list with the arrow keys, press Right Arrow on a group to open it and Left Arrow to close it. Press Escape to close the group, and again to close the menu.<br>A Slot you capture while a group is open goes straight into that group. To remove a group but keep its Slots, choose Ungroup in the group's ••• menu."
+        },
+        {
+          "q": "How can I tell which Slot is on my screen right now?",
+          "a": "Look at the Desktop number in front of each Slot's name.<br>When the windows on screen match a Slot, that number (or the x for a Slot that isn't tied to a Desktop) is filled in with your accent colour.<br>Slots compares where each app's windows are and how big they are, not which tabs or folders they show, so moving or resizing a window removes the mark.<br>A Slot kept to another Desktop is never marked, and when a smaller Slot is part of a bigger one on screen, only the bigger one is marked."
+        },
+        {
+          "q": "Can I open a Slot without closing what's already on my Desktop?",
+          "a": "Yes. Click the Restore Here button on the Slot's row (it shows when you point at the row), or choose Restore Here, Keep Windows in the Slot's ••• menu.<br>You can also select the Slot with the arrow keys and press R.<br>Slots opens the Slot's windows on the Desktop you're on and puts them in their saved positions, without closing any window, quitting any app, or switching Desktops.<br>Windows that already show the Slot's tabs or folders are moved into place instead of opened a second time."
+        },
+        {
+          "q": "I deleted or replaced a Slot by mistake. Can I get it back?",
+          "a": "Yes, as long as the Slots menu is still open. After Delete, Replace with Current Layout, or removing a window or tab in Show Details, an Undo button appears at the bottom of the menu.<br>Click it to put that Slot back exactly as it was, including its pin. Once you close the menu, the change is final."
+        },
+        {
+          "q": "Some windows weren't restored. How do I find out which?",
+          "a": "Click the red message at the bottom of the Slots menu.<br>It expands into a list of every window that couldn't be restored, with its tabs, folders, project, or window title, so you can see at a glance what's missing.<br>Because a restore closes the menu, Slots also shows a notification when something didn't come back; click it to open that list.<br>Click Retry to try again for just those windows; nothing that's already open is closed."
+        },
+        {
+          "q": "Restoring a Slot shows Xcode's Open dialog instead of my project. What now?",
+          "a": "That Slot was captured with an earlier version of Slots while the project had no file open, so the project itself wasn't saved.<br>Open the project, then choose Replace with Current Layout in the Slot's ••• menu once. From then on the project reopens when you restore the Slot."
+        },
+        {
+          "q": "Is there a keyboard shortcut to restore a Slot?",
+          "a": "Yes. Set a global shortcut in Settings → Shortcuts to open the Slots menu from anywhere.<br>Opening it that way arms 1 through 9 (and 0 for the tenth) as instant shortcuts, so pressing your global shortcut and a single digit restores that Slot right away.<br>Slots further down the list get a letter instead, A to Z, shown next to each name. Inside an open group, the numbers and letters pick that group's Slots.<br>Prefer to check first? Set Number and letter keys to Select, then press Return in Settings → Shortcuts. The key then selects the Slot (or opens the group), and Return restores it.<br>On a Slot selected with the arrow keys, R is Restore Here, Keep Windows, X closes its windows and P pins or unpins it. The left and right arrows move to the buttons on its row, Return presses the highlighted one and Escape takes the highlight off again. With no Slot selected, those letters pick a Slot like any other.<br>To capture a new Slot from anywhere, record a shortcut for Capture current layout in the same place.<br>Pressing it opens Slots and starts the capture, just like clicking the button, so all that's left is to type a name. The shortcut you recorded is shown on the Capture Current Layout button."
+        },
+        {
+          "q": "Can I restore all my Desktops at once?",
+          "a": "Yes. Click the pin on one Slot for each Desktop, then choose Restore All Pinned Desktops in the ≡ menu.<br>Slots switches to each Desktop in turn, restores the Slot pinned for it, and returns you to the Desktop you started on.<br>Pinning a second Slot for the same Desktop replaces the first, and Slots asks you before it does: press Return or click Pin to go ahead.<br>You can also pin from the keyboard: select a Slot with the arrow keys and press P.<br>The pinned Slots are also restored every time Slots starts, so with Start Slots on login turned on, your whole setup is back after a restart."
+        },
+        {
+          "q": "Can I use Slots with Shortcuts, Siri, or a Focus?",
+          "a": "Yes. The Shortcuts app has three Slots actions: Restore Slot (optionally keeping your open windows), Restore All Pinned Desktops, and Capture Slot, which returns the new Slot for the next step of your shortcut.<br>Siri and Spotlight understand phrases like \"Restore Home in Slots\" and \"Restore all pinned Desktops in Slots\".<br>To restore a Slot whenever a Focus turns on, open System Settings → Focus, choose the Focus, click Add Filter, pick Slots, and choose the Slot. It's restored once each time that Focus turns on."
+        },
+        {
+          "q": "Where can I read the introduction again?",
+          "a": "Open the ≡ menu in Slots and choose Show Introduction. It's a short tour of everything Slots can do, ending with the two permissions it needs."
+        },
+        {
+          "q": "Can I hide the menu bar icon?",
+          "a": "Yes. Once you've set an Open Slots menu shortcut in Settings → Shortcuts, the \"Hide menu bar icon\" toggle in Settings → General can be turned on.<br>With it on, Slots opens only via that shortcut or by launching the app again from Finder."
+        }
+      ]
+    }
+  ],
+  "legal": {
+    "bundleID": "fr.arievanboxel.Slots",
+    "privacySections": [
+      {
+        "title": "Privacy Policy",
+        "body": "Slots is designed with your privacy in mind. No personal information is collected during its use. All settings are stored locally on your Mac and are never transmitted to external servers."
+      },
+
+      {
+        "title": "Contact",
+        "body": "Questions about privacy? Contact me via <i>Contact</i> in the footer."
+      },
+
+      {
+        "title": "Copyright",
+        "body": "Copyright 2026 by Arie van Boxel. Last updated: July 12, 2026."
+      }
+    ]
+  },
+  "buyMeACoffeeURL": "https://www.buymeacoffee.com/loeribas",
+  "paypalDonateURL": "https://www.paypal.com/donate/?hosted_button_id=425PFFQHZ8CRQ"
+}

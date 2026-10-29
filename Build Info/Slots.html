@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0A84FF;
+      --bg:     #ffffff;
+      --bg-alt: #f5f5f7;
+      --text:   #1d1d1f;
+      --text-2: #6e6e73;
+      --border: rgba(0,0,0,.08);
+      --badge-bg: #0A84FF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:     #1c1c1e;
+        --bg-alt: #2c2c2e;
+        --text:   #f5f5f7;
+        --text-2: #98989d;
+        --border: rgba(255,255,255,.1);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 16px 18px 20px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .app-name {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -.2px;
+    }
+    .version-badge {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 20px;
+      letter-spacing: .01em;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      margin-top: 12px;
+    }
+    .section-label:first-of-type { margin-top: 0; }
+
+    /* Items */
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    li {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      font-size: 13px;
+      color: var(--text);
+    }
+    li::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 14px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    li small {
+      display: block;
+      color: var(--text-2);
+      font-size: 11.5px;
+      margin-top: 2px;
+    }
+    strong { font-weight: 600; }
+
+    /* Footer note */
+    .note {
+      margin-top: 14px;
+      padding-top: 11px;
+      border-top: 1px solid var(--border);
+      font-size: 11.5px;
+      color: var(--text-2);
+    }
+    .note a { color: var(--accent); text-decoration: none; }
+    .note a:hover { text-decoration: underline; }
+
+    /* Changelog link, styled like .version-badge */
+    .note a.changelog-link {
+      color: #fff;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .note a.changelog-link:hover { filter: brightness(1.1); text-decoration: none; }
+  </style>
+  <title>Slots</title>
+</head>
+<body>
+  <div class="header sparkle-only">
+    <span class="app-name">Slots</span> <span class="version-badge">2.1.1</span>
+  </div>
+
+<p class="section-label">New</p>
+  <ul>
+  <li><span>Rest the pointer on a slot’s icon to see its window layout at a glance: every screen it uses, with each window and the app it belongs to.<small>This works with the Window Layout thumbnail too, under <strong>Slot graphic</strong> in <strong>Settings ▸ General</strong>. Hover over a window in the preview to see its tabs, folders or project. Clicking the icon still lets you change it.</small></span></li>
+  </ul>
+
+<p class="section-label">Improved</p>
+  <ul>
+  <li><span>The numbered Desktop buttons at the bottom of the menu are now one <strong>Go to</strong> pop-up menu, so they fit however many Desktops you have.<small>The pop-up shows the Desktop you’re on, and lists the slots kept to each Desktop so you know where you’re going. Pick another one to switch there; nothing is restored. With the menu open, Option-1, Option-2 and so on take you straight to that Desktop.</small></span></li>
+  </ul>
+
+<p class="section-label">Fixed</p>
+  <ul>
+  <li><span>Terminal windows now open in the folder they were in when you captured the slot, instead of your home folder.<small>Slots you captured before this update saved your home folder. To fix one, open its Terminal windows in the right folders and choose <strong>Replace with Current Layout</strong> in the slot’s ••• menu.</small></span></li>
+  </ul>
+
+  <p class="note"><a class="version-badge changelog-link" href="https://slots.appmac.fr/changelog.html">View the full changelog →</a><br>See the <a href="https://slots.appmac.fr">Slots website</a> to not miss any of the options.</p>
+</body>
+</html>

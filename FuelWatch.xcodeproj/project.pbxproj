@@ -1,0 +1,520 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00076CE43093503A00B45718 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 00076CE33093503A00B45718 /* AppIcon.icon */; };
+		2FC00200F82570B3490564FB /* FuelWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3016B4AE9418F7A332E4E05C /* FuelWatchApp.swift */; };
+		3FD3A37A49484032D0F294BD /* FuelWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390532E45052A383483695E /* FuelWatchTests.swift */; };
+		40701D8C92F611CC08B9800F /* PriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB3E70A590022B9DEC49A /* PriceService.swift */; };
+		4B7FB4E20EEEFAB46110027E /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C74F5F98154C40763D3F8B /* FuelType.swift */; };
+		4CB5B8BC98E92C6C95AB3D3D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7271458E4D3A76A35004C445 /* SettingsView.swift */; };
+		526CEC47BA99700545383915 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB08545D639E619C46DF357 /* MenuView.swift */; };
+		619732F37D15373D5B158208 /* FuelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EE76F5B2E61590F9C7BA39 /* FuelStore.swift */; };
+		7548F672CD08F0116DA9CD2D /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D529B7F80F5C93B11B2DCA /* AddressService.swift */; };
+		8E0C0D2EBE489B13C1DB533E /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C54BEB4FCC4F3A4D9331F4 /* Station.swift */; };
+		94B00A25C88BCF65AEC87F29 /* PriceAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD36D55CC22533A4186AE52 /* PriceAlerts.swift */; };
+		A1F0E7C2B3D4E5F60718293A /* NtfyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0E7C2B3D4E5F60718293B /* NtfyService.swift */; };
+		B1EFACC311707105E6CCB530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67344E73944FAC83096B3615 /* Assets.xcassets */; };
+		D535FD47E22C0632BF1C2803 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA2F3E6CFBA75528A3B018 /* HistoryStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		41F37EBC1AAC2F727DC811F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 710AEC1A48D77ACB05C5926E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C540E96C3533ACBB909CFDB7;
+			remoteInfo = FuelWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00076CE33093503A00B45718 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		10D529B7F80F5C93B11B2DCA /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
+		3016B4AE9418F7A332E4E05C /* FuelWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelWatchApp.swift; sourceTree = "<group>"; };
+		423FB3E70A590022B9DEC49A /* PriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceService.swift; sourceTree = "<group>"; };
+		4DE16D0EA34BB4ECA2B37054 /* FuelWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FuelWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BB08545D639E619C46DF357 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		67344E73944FAC83096B3615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67C74F5F98154C40763D3F8B /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
+		7271458E4D3A76A35004C445 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		75DA2F3E6CFBA75528A3B018 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		83EE76F5B2E61590F9C7BA39 /* FuelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelStore.swift; sourceTree = "<group>"; };
+		99C54BEB4FCC4F3A4D9331F4 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		A1F0E7C2B3D4E5F60718293B /* NtfyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NtfyService.swift; sourceTree = "<group>"; };
+		A95DF8E49748946EEDD39415 /* FuelWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuelWatch.entitlements; sourceTree = "<group>"; };
+		D390532E45052A383483695E /* FuelWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelWatchTests.swift; sourceTree = "<group>"; };
+		DFD36D55CC22533A4186AE52 /* PriceAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAlerts.swift; sourceTree = "<group>"; };
+		E2BDC3483586B03095D60608 /* FuelWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuelWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		558E06B54AD885633AAAE9F6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				10D529B7F80F5C93B11B2DCA /* AddressService.swift */,
+				75DA2F3E6CFBA75528A3B018 /* HistoryStore.swift */,
+				A1F0E7C2B3D4E5F60718293B /* NtfyService.swift */,
+				DFD36D55CC22533A4186AE52 /* PriceAlerts.swift */,
+				423FB3E70A590022B9DEC49A /* PriceService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7D6284405F057DCB57C85DF1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3016B4AE9418F7A332E4E05C /* FuelWatchApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8B94AD1D9B321AD57860C9A1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BB08545D639E619C46DF357 /* MenuView.swift */,
+				7271458E4D3A76A35004C445 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8D417819D229E14AE7493BF7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67C74F5F98154C40763D3F8B /* FuelType.swift */,
+				99C54BEB4FCC4F3A4D9331F4 /* Station.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9A4CB9E64B71F84FB4EB456C /* FuelWatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				D390532E45052A383483695E /* FuelWatchTests.swift */,
+			);
+			path = FuelWatchTests;
+			sourceTree = "<group>";
+		};
+		C15349EC9601439C4353E8B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDC3483586B03095D60608 /* FuelWatch.app */,
+				4DE16D0EA34BB4ECA2B37054 /* FuelWatchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBC31529600A56D31FAA98B3 /* FuelWatch */ = {
+			isa = PBXGroup;
+			children = (
+				67344E73944FAC83096B3615 /* Assets.xcassets */,
+				A95DF8E49748946EEDD39415 /* FuelWatch.entitlements */,
+				7D6284405F057DCB57C85DF1 /* App */,
+				8D417819D229E14AE7493BF7 /* Models */,
+				558E06B54AD885633AAAE9F6 /* Services */,
+				E8F7609CB29CFFE6DA63B8AF /* Store */,
+				8B94AD1D9B321AD57860C9A1 /* Views */,
+				00076CE33093503A00B45718 /* AppIcon.icon */,
+			);
+			path = FuelWatch;
+			sourceTree = "<group>";
+		};
+		DC24FEC058D78A3D4C6BE97E = {
+			isa = PBXGroup;
+			children = (
+				DBC31529600A56D31FAA98B3 /* FuelWatch */,
+				9A4CB9E64B71F84FB4EB456C /* FuelWatchTests */,
+				C15349EC9601439C4353E8B9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E8F7609CB29CFFE6DA63B8AF /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				83EE76F5B2E61590F9C7BA39 /* FuelStore.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B4F2DB181C91AD0C66F33A0 /* FuelWatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2D0DEBB826A8EBCA97532F7 /* Build configuration list for PBXNativeTarget "FuelWatchTests" */;
+			buildPhases = (
+				1A63C6AE12434B0855A9D22F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29CCF134C9141078A453BE99 /* PBXTargetDependency */,
+			);
+			name = FuelWatchTests;
+			packageProductDependencies = (
+			);
+			productName = FuelWatchTests;
+			productReference = 4DE16D0EA34BB4ECA2B37054 /* FuelWatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C540E96C3533ACBB909CFDB7 /* FuelWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87043B91DF90F63793E9DD53 /* Build configuration list for PBXNativeTarget "FuelWatch" */;
+			buildPhases = (
+				81D5CB58C8D6876579B6EAEF /* Sources */,
+				86BA6F022B2D51326FFB3CD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FuelWatch;
+			packageProductDependencies = (
+			);
+			productName = FuelWatch;
+			productReference = E2BDC3483586B03095D60608 /* FuelWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		710AEC1A48D77ACB05C5926E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					5B4F2DB181C91AD0C66F33A0 = {
+						DevelopmentTeam = 488UD3H8PZ;
+						ProvisioningStyle = Automatic;
+					};
+					C540E96C3533ACBB909CFDB7 = {
+						DevelopmentTeam = 488UD3H8PZ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 02C12DA4C8CEAB3723B06BF2 /* Build configuration list for PBXProject "FuelWatch" */;
+			developmentRegion = nl;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				nl,
+			);
+			mainGroup = DC24FEC058D78A3D4C6BE97E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C15349EC9601439C4353E8B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C540E96C3533ACBB909CFDB7 /* FuelWatch */,
+				5B4F2DB181C91AD0C66F33A0 /* FuelWatchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		86BA6F022B2D51326FFB3CD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1EFACC311707105E6CCB530 /* Assets.xcassets in Resources */,
+				00076CE43093503A00B45718 /* AppIcon.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A63C6AE12434B0855A9D22F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FD3A37A49484032D0F294BD /* FuelWatchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81D5CB58C8D6876579B6EAEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7548F672CD08F0116DA9CD2D /* AddressService.swift in Sources */,
+				619732F37D15373D5B158208 /* FuelStore.swift in Sources */,
+				4B7FB4E20EEEFAB46110027E /* FuelType.swift in Sources */,
+				2FC00200F82570B3490564FB /* FuelWatchApp.swift in Sources */,
+				D535FD47E22C0632BF1C2803 /* HistoryStore.swift in Sources */,
+				526CEC47BA99700545383915 /* MenuView.swift in Sources */,
+				A1F0E7C2B3D4E5F60718293A /* NtfyService.swift in Sources */,
+				94B00A25C88BCF65AEC87F29 /* PriceAlerts.swift in Sources */,
+				40701D8C92F611CC08B9800F /* PriceService.swift in Sources */,
+				4CB5B8BC98E92C6C95AB3D3D /* SettingsView.swift in Sources */,
+				8E0C0D2EBE489B13C1DB533E /* Station.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		29CCF134C9141078A453BE99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C540E96C3533ACBB909CFDB7 /* FuelWatch */;
+			targetProxy = 41F37EBC1AAC2F727DC811F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		20508700DDDA9E721DCA92A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FuelWatch/FuelWatch.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FuelWatch;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Arie van Boxel";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.arievanboxel.fuelwatch;
+				PRODUCT_NAME = FuelWatch;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2612948D77E13F499A45931C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.arievanboxel.fuelwatchTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FuelWatch.app/Contents/MacOS/FuelWatch";
+			};
+			name = Release;
+		};
+		7ECF842569AF072869348ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 488UD3H8PZ;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		7F534264BDA0D38E924FBA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 488UD3H8PZ;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		B15D1E0794C6823408118D4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.arievanboxel.fuelwatchTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FuelWatch.app/Contents/MacOS/FuelWatch";
+			};
+			name = Debug;
+		};
+		BB16D3DEDBF59156E7BF6BD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FuelWatch/FuelWatch.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FuelWatch;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Arie van Boxel";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.arievanboxel.fuelwatch;
+				PRODUCT_NAME = FuelWatch;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02C12DA4C8CEAB3723B06BF2 /* Build configuration list for PBXProject "FuelWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ECF842569AF072869348ACB /* Debug */,
+				7F534264BDA0D38E924FBA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		87043B91DF90F63793E9DD53 /* Build configuration list for PBXNativeTarget "FuelWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB16D3DEDBF59156E7BF6BD9 /* Debug */,
+				20508700DDDA9E721DCA92A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A2D0DEBB826A8EBCA97532F7 /* Build configuration list for PBXNativeTarget "FuelWatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B15D1E0794C6823408118D4D /* Debug */,
+				2612948D77E13F499A45931C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 710AEC1A48D77ACB05C5926E /* Project object */;
+}
