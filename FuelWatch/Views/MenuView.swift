@@ -102,6 +102,9 @@ private struct FuelSection: View {
                     ForEach(report.cheapest.prefix(3)) { station in
                         StationRow(station: station, isCheapest: station.price == report.bestPrice)
                     }
+                    if !report.shortages.isEmpty {
+                        ShortageList(fuel: fuel, shortages: report.shortages)
+                    }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -212,5 +215,76 @@ private struct StationRow: View {
             parts.append(updated.formatted(.relative(presentation: .named)))
         }
         return parts.joined(separator: " · ")
+    }
+}
+
+/// Stations nearby that have temporarily run out of the fuel. Collapsed to one line until clicked.
+private struct ShortageList: View {
+    let fuel: FuelType
+    let shortages: [StationShortage]
+    @State private var isExpanded = false
+
+    var body: some View {
+        DisclosureGroup(isExpanded: $isExpanded) {
+            ForEach(shortages.prefix(5)) { shortage in
+                ShortageRow(shortage: shortage)
+            }
+            if shortages.count > 5 {
+                Text("en nog \(shortages.count - 5) verder weg")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        } label: {
+            Label(title, systemImage: "exclamationmark.triangle.fill")
+                .font(.caption)
+                .foregroundStyle(.orange)
+        }
+    }
+
+    private var title: String {
+        shortages.count == 1
+            ? "\(fuel.displayName) is op bij 1 station"
+            : "\(fuel.displayName) is op bij \(shortages.count) stations"
+    }
+}
+
+/// One station that is out of the fuel: town, address, distance and since when. Click to open in Maps.
+private struct ShortageRow: View {
+    let shortage: StationShortage
+
+    var body: some View {
+        Button {
+            if let url = shortage.mapsURL { NSWorkspace.shared.open(url) }
+        } label: {
+            HStack(alignment: .firstTextBaseline) {
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(shortage.town).lineLimit(1)
+                    Text(details)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
+                Spacer()
+                if let since = shortage.since {
+                    Text("op sinds \(Self.sinceText(since))")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                }
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .help("Toon in Kaarten")
+    }
+
+    /// "08:52" for today, "6 nov." for earlier days.
+    static func sinceText(_ date: Date) -> String {
+        Calendar.current.isDateInToday(date)
+            ? date.formatted(date: .omitted, time: .shortened)
+            : date.formatted(.dateTime.day().month(.abbreviated))
+    }
+
+    private var details: String {
+        "\(shortage.address) · \(shortage.distance.formatted(.number.precision(.fractionLength(1)))) km"
     }
 }

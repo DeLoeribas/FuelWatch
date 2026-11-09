@@ -19,6 +19,10 @@ struct PriceService: Sendable {
 
     /// Prices older than this are ignored: some stations stop reporting and keep a stale price.
     static let maxPriceAgeDays = 7
+    /// Shortages that started longer ago than this are ignored: some stations never clear a "temporary" shortage.
+    static let maxShortageAgeDays = 14
+    /// At most this many shortages are fetched per fuel.
+    static let shortageLimit = 20
 
     let session: URLSession
 
@@ -55,9 +59,18 @@ struct PriceService: Sendable {
             "limit": "1",
         ])
 
+        async let shortageData = get([
+            "where": Self.shortageFilter(for: fuel, around: place, radiusKm: radiusKm),
+            "select": "id,adresse,ville,geom,\(p)_rupture_debut",
+            "order_by": "\(p)_rupture_debut desc",
+            "limit": String(Self.shortageLimit),
+        ])
+
         let stations = try Self.parseStations(try await stationsData, fuel: fuel, from: place)
         let stats = try Self.parseStats(try await statsData)
-        return FuelReport(fuel: fuel, cheapest: stations, average: stats.average, stationCount: stats.count)
+        let shortages = try Self.parseShortages(try await shortageData, fuel: fuel, from: place)
+        return FuelReport(fuel: fuel, cheapest: stations, average: stats.average, stationCount: stats.count,
+                          shortages: shortages)
     }
 
     // MARK: - Query building
@@ -71,6 +84,17 @@ struct PriceService: Sendable {
             "\(p)_prix is not null",
             "\(p)_maj >= now(days=-\(maxPriceAgeDays))",
             "not carburants_indisponibles = '\(fuel.feedName)'",
+        ].joined(separator: " and ")
+    }
+
+    /// The ODSQL filter for stations within the radius that recently ran out of `fuel`.
+    static func shortageFilter(for fuel: FuelType, around place: Place, radiusKm: Int) -> String {
+        let p = fuel.fieldPrefix
+        let point = "POINT(\(place.longitude) \(place.latitude))"
+        return [
+            "within_distance(geom, geom'\(point)', \(radiusKm)km)",
+            "\(p)_rupture_type = 'temporaire'",
+            "\(p)_rupture_debut >= now(days=-\(maxShortageAgeDays))",
         ].joined(separator: " and ")
     }
 
@@ -104,6 +128,7 @@ struct PriceService: Sendable {
         let cp: String?
         let geom: Geometry?
         let values: [String: Double]
+        /// The `_maj` and `_rupture_debut` date fields, by field name.
         let dates: [String: String]
 
         private struct Key: CodingKey {
@@ -125,7 +150,7 @@ struct PriceService: Sendable {
             for key in c.allKeys {
                 if key.stringValue.hasSuffix("_prix") {
                     values[key.stringValue] = try c.decodeIfPresent(Double.self, forKey: key)
-                } else if key.stringValue.hasSuffix("_maj") {
+                } else if key.stringValue.hasSuffix("_maj") || key.stringValue.hasSuffix("_rupture_debut") {
                     dates[key.stringValue] = try c.decodeIfPresent(String.self, forKey: key)
                 }
             }
@@ -158,6 +183,25 @@ struct PriceService: Sendable {
                 distance: distance
             )
         }
+    }
+
+    /// Parses shortage records, closest station first.
+    static func parseShortages(_ data: Data, fuel: FuelType, from place: Place) throws -> [StationShortage] {
+        let page = try JSONDecoder().decode(Page<StationRecord>.self, from: data)
+        let dateParser = ISO8601DateFormatter()
+        return page.results.compactMap { record -> StationShortage? in
+            guard let geom = record.geom else { return nil }
+            return StationShortage(
+                stationID: record.id,
+                address: record.adresse?.localizedCapitalized ?? "",
+                town: record.ville?.localizedCapitalized ?? "",
+                latitude: geom.lat,
+                longitude: geom.lon,
+                since: record.dates["\(fuel.fieldPrefix)_rupture_debut"].flatMap { dateParser.date(from: $0) },
+                distance: place.location.distance(from: CLLocation(latitude: geom.lat, longitude: geom.lon)) / 1000
+            )
+        }
+        .sorted { $0.distance < $1.distance }
     }
 
     static func parseStats(_ data: Data) throws -> (average: Double?, count: Int) {

@@ -152,3 +152,87 @@ struct HistoryStoreTests {
         #expect(try await reloaded.latest(for: .gazole, areaKey: "a") == nil)
     }
 }
+
+@Suite("Shortages")
+struct ShortageTests {
+    @Test("Filter asks for recent temporary shortages within the radius")
+    func filter() {
+        let filter = PriceService.shortageFilter(for: .gazole, around: dax, radiusKm: 20)
+        #expect(filter.contains("within_distance(geom, geom'POINT(-1.05 43.71)', 20km)"))
+        #expect(filter.contains("gazole_rupture_type = 'temporaire'"))
+        #expect(filter.contains("gazole_rupture_debut >= now(days=-14)"))
+    }
+
+    @Test("Shortages are parsed with start date, closest first")
+    func parse() throws {
+        let json = """
+        {"total_count": 3, "results": [
+          {"id": 1, "adresse": "ROUTE DE TOSSE", "ville": "CASTETS", "geom": {"lon": -1.15, "lat": 43.88},
+           "gazole_rupture_debut": "2026-11-06T16:51:26+00:00"},
+          {"id": 2, "adresse": "1 RUE TEST", "ville": "DAX", "geom": {"lon": -1.05, "lat": 43.72},
+           "gazole_rupture_debut": "2026-11-05T13:28:32+00:00"},
+          {"id": 3, "adresse": "no location", "ville": "Dax", "gazole_rupture_debut": null}]}
+        """
+        let shortages = try PriceService.parseShortages(Data(json.utf8), fuel: .gazole, from: dax)
+        #expect(shortages.map(\.stationID) == [2, 1])
+        let first = try #require(shortages.first)
+        #expect(first.town == "Dax")
+        #expect(first.since == ISO8601DateFormatter().date(from: "2026-11-05T13:28:32+00:00"))
+        #expect(first.mapsURL != nil)
+    }
+
+    @Test("Shortage dates don't leak into price parsing")
+    func priceParsingIgnoresShortages() throws {
+        let json = """
+        {"results": [{"id": 1, "geom": {"lon": -1.05, "lat": 43.72}, "e85_prix": 0.869,
+          "e85_maj": "2026-11-09T01:17:00+00:00", "sp95_rupture_debut": "2023-01-13T14:39:39+00:00"}]}
+        """
+        let stations = try PriceService.parseStations(Data(json.utf8), fuel: .e85, from: dax)
+        #expect(stations.first?.updated == ISO8601DateFormatter().date(from: "2026-11-09T01:17:00+00:00"))
+    }
+}
+
+@Suite("Shortage alerts")
+struct ShortageAlertTests {
+    private func shortage(_ id: Int, town: String, distance: Double, since: Date? = Date(timeIntervalSince1970: 1_800_000_000)) -> StationShortage {
+        StationShortage(stationID: id, address: "1 Rue Test", town: town, latitude: 43.7, longitude: -1.05,
+                        since: since, distance: distance)
+    }
+
+    private func report(_ fuel: FuelType, _ shortages: [StationShortage]) -> FuelReport {
+        FuelReport(fuel: fuel, cheapest: [], average: nil, stationCount: 0, shortages: shortages)
+    }
+
+    @Test("Only shortages not seen before are new")
+    func newOnly() {
+        let castets = shortage(1, town: "Castets", distance: 20)
+        let dax = shortage(2, town: "Dax", distance: 1)
+        let known: Set = [PriceAlerts.shortageKey(castets, fuel: .gazole)]
+        let new = PriceAlerts.newShortages(in: [report(.gazole, [dax, castets]), report(.e85, [])], known: known)
+        #expect(new.count == 1)
+        #expect(new.first?.fuel == .gazole)
+        #expect(new.first?.shortages.map(\.stationID) == [2])
+    }
+
+    @Test("The same station running out again later is new; another fuel is separate")
+    func keys() {
+        let first = shortage(1, town: "Dax", distance: 1, since: Date(timeIntervalSince1970: 1_800_000_000))
+        let again = shortage(1, town: "Dax", distance: 1, since: Date(timeIntervalSince1970: 1_800_100_000))
+        #expect(PriceAlerts.shortageKey(first, fuel: .gazole) != PriceAlerts.shortageKey(again, fuel: .gazole))
+        #expect(PriceAlerts.shortageKey(first, fuel: .gazole) != PriceAlerts.shortageKey(first, fuel: .sp95))
+    }
+
+    @Test("Message names the station, or the towns when there are several")
+    func message() {
+        let one = PriceAlerts.shortageMessage(fuel: .gazole, shortages: [shortage(1, town: "Dax", distance: 1.2)])
+        #expect(one?.title == "Gazole is op bij Dax")
+        #expect(one?.body.contains("Dax") == true)
+
+        let many = PriceAlerts.shortageMessage(fuel: .e10, shortages: [
+            shortage(1, town: "Dax", distance: 1), shortage(2, town: "Castets", distance: 20),
+        ])
+        #expect(many?.title == "E10 is op bij 2 stations")
+        #expect(many?.body.contains("Castets") == true)
+        #expect(PriceAlerts.shortageMessage(fuel: .e10, shortages: []) == nil)
+    }
+}

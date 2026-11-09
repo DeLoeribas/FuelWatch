@@ -34,6 +34,35 @@ enum PriceAlerts {
                 "Het goedkoopst bij \(best.address), \(best.town).")
     }
 
+    // MARK: - Shortages
+
+    /// Identifies one shortage; the start date is included so a station running out again later counts as new.
+    static func shortageKey(_ shortage: StationShortage, fuel: FuelType) -> String {
+        "\(fuel.rawValue):\(shortage.stationID):\(shortage.since.map { Int($0.timeIntervalSince1970) } ?? 0)"
+    }
+
+    /// Per fuel, the shortages in `reports` whose key isn't in `known`, closest first.
+    static func newShortages(in reports: [FuelReport], known: Set<String>) -> [(fuel: FuelType, shortages: [StationShortage])] {
+        reports.compactMap { report in
+            let new = report.shortages.filter { !known.contains(shortageKey($0, fuel: report.fuel)) }
+            return new.isEmpty ? nil : (report.fuel, new)
+        }
+    }
+
+    /// Alert text for stations that just ran out of `fuel`, or nil when there are none.
+    static func shortageMessage(fuel: FuelType, shortages: [StationShortage]) -> (title: String, body: String)? {
+        guard let closest = shortages.first else { return nil }
+        let distance = closest.distance.formatted(.number.precision(.fractionLength(1)))
+        if shortages.count == 1 {
+            return ("\(fuel.displayName) is op bij \(closest.town)",
+                    "\(closest.address), \(closest.town) (\(distance) km) heeft geen \(fuel.displayName) meer.")
+        }
+        let towns = shortages.prefix(4).map(\.town).formatted(.list(type: .and))
+        let more = shortages.count > 4 ? " en nog \(shortages.count - 4) stations" : ""
+        return ("\(fuel.displayName) is op bij \(shortages.count) stations",
+                "Geen \(fuel.displayName) meer in \(towns)\(more). Het dichtstbij is \(closest.town) (\(distance) km).")
+    }
+
     /// Asks for permission to show notifications; returns whether it was granted.
     @discardableResult
     static func requestAuthorization() async -> Bool {

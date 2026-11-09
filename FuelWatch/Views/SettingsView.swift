@@ -106,6 +106,7 @@ private struct FuelSettings: View {
                     ForEach(FuelType.allCases) { Text($0.displayName).tag($0) }
                 }
                 Toggle("Meld het als de laagste prijs daalt", isOn: $store.notifyOnDrop)
+                Toggle("Meld het als een station in de buurt een brandstof niet meer heeft", isOn: $store.notifyOnShortage)
             } footer: {
                 Text("Vul naast een brandstof een alertprijs in om een melding te krijgen zodra het goedkoopste station daaronder zakt.")
                     .font(.caption)
@@ -144,6 +145,8 @@ private struct PhoneSettings: View {
         Form {
             Section {
                 Toggle("Stuur prijsdalingen naar mijn iPhone via ntfy", isOn: $store.ntfyEnabled)
+                Toggle("Stuur ook een bericht als een brandstof op is", isOn: $store.ntfyShortages)
+                    .disabled(!store.ntfyEnabled)
                 TextField("Server", text: $store.ntfyConfig.server, prompt: Text(NtfyConfig.defaultServer))
                 HStack {
                     TextField("Topic", text: $store.ntfyConfig.topic, prompt: Text("je-topic-naam"))
@@ -168,7 +171,7 @@ private struct PhoneSettings: View {
                     }
                 }
             } footer: {
-                Text("Je iPhone krijgt alleen een bericht als de laagste prijs van een brandstof daalt. Installeer de ntfy-app op je iPhone en abonneer je op hetzelfde topic. Op ntfy.sh kan iedereen die de naam van een topic kent de berichten lezen, dus kies een naam die moeilijk te raden is. Tik op een melding om het station in Kaarten te openen.")
+                Text("Je iPhone krijgt een bericht als de laagste prijs van een brandstof daalt en, als je dat aanzet, als een station in de buurt een brandstof niet meer heeft. Installeer de ntfy-app op je iPhone en abonneer je op hetzelfde topic. Op ntfy.sh kan iedereen die de naam van een topic kent de berichten lezen, dus kies een naam die moeilijk te raden is. Tik op een melding om het station in Kaarten te openen.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

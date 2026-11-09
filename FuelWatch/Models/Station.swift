@@ -37,6 +37,30 @@ struct StationPrice: Identifiable, Equatable, Sendable {
     }
 }
 
+/// A station that has temporarily run out of one fuel.
+struct StationShortage: Identifiable, Equatable, Sendable {
+    let stationID: Int
+    let address: String
+    let town: String
+    let latitude: Double
+    let longitude: Double
+    /// When the station reported the fuel as out of stock.
+    let since: Date?
+    /// Distance from the search centre, in kilometres.
+    let distance: Double
+
+    var id: Int { stationID }
+
+    var mapsURL: URL? {
+        var components = URLComponents(string: "https://maps.apple.com/")
+        components?.queryItems = [
+            URLQueryItem(name: "ll", value: "\(latitude),\(longitude)"),
+            URLQueryItem(name: "q", value: "\(address), \(town)"),
+        ]
+        return components?.url
+    }
+}
+
 /// The result of one refresh for one fuel.
 struct FuelReport: Equatable, Sendable {
     let fuel: FuelType
@@ -44,6 +68,8 @@ struct FuelReport: Equatable, Sendable {
     let cheapest: [StationPrice]
     let average: Double?
     let stationCount: Int
+    /// Stations in the area that are temporarily out of this fuel, closest first.
+    var shortages: [StationShortage] = []
 
     var bestPrice: Double? { cheapest.first?.price }
 }

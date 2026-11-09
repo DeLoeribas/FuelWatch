@@ -32,6 +32,15 @@ final class FuelStore {
         didSet { save(Dictionary(uniqueKeysWithValues: thresholds.map { ($0.key.rawValue, $0.value) }), forKey: Keys.thresholds) }
     }
 
+    /// Notify when a station in the area runs out of a tracked fuel.
+    var notifyOnShortage: Bool {
+        didSet { defaults.set(notifyOnShortage, forKey: Keys.notifyOnShortage) }
+    }
+    /// Also send shortage alerts to the phone (price drops always go there when ntfy is on).
+    var ntfyShortages: Bool {
+        didSet { defaults.set(ntfyShortages, forKey: Keys.ntfyShortages) }
+    }
+
     /// Also send alerts to a phone through ntfy.
     var ntfyEnabled: Bool {
         didSet { defaults.set(ntfyEnabled, forKey: Keys.ntfyEnabled) }
@@ -107,6 +116,8 @@ final class FuelStore {
             .reduce(into: [:]) { result, entry in
                 if let fuel = FuelType(rawValue: entry.key) { result[fuel] = entry.value }
             }
+        notifyOnShortage = defaults.object(forKey: Keys.notifyOnShortage) as? Bool ?? true
+        ntfyShortages = defaults.bool(forKey: Keys.ntfyShortages)
         ntfyEnabled = defaults.bool(forKey: Keys.ntfyEnabled)
         ntfyConfig = NtfyConfig(server: defaults.string(forKey: Keys.ntfyServer) ?? NtfyConfig.defaultServer,
                                 topic: defaults.string(forKey: Keys.ntfyTopic) ?? "")
@@ -130,6 +141,7 @@ final class FuelStore {
             guard self.place == place, self.radiusKm == radiusKm else { return }
 
             await sendAlerts(for: fetched, areaKey: areaKey)
+            await sendShortageAlerts(for: fetched, areaKey: areaKey)
 
             let now = Date.now
             let points = fetched.compactMap { report in
@@ -164,6 +176,34 @@ final class FuelStore {
                 do {
                     try await ntfy.send(title: drop.title, message: drop.body,
                                         click: report.cheapest.first?.mapsURL, to: ntfyConfig)
+                } catch {
+                    errorMessage = "Versturen naar ntfy lukte niet: \(error.localizedDescription)"
+                }
+            }
+        }
+    }
+
+    /// Notifies about stations that ran out since the previous refresh.
+    /// The first refresh in an area only records what's already out, so a new town doesn't cause a burst of alerts.
+    private func sendShortageAlerts(for fetched: [FuelReport], areaKey: String) async {
+        let current = Set(fetched.flatMap { report in
+            report.shortages.map { PriceAlerts.shortageKey($0, fuel: report.fuel) }
+        })
+        let isSameArea = defaults.string(forKey: Keys.knownShortagesArea) == areaKey
+        let known = Set(defaults.stringArray(forKey: Keys.knownShortages) ?? [])
+        defaults.set(Array(current), forKey: Keys.knownShortages)
+        defaults.set(areaKey, forKey: Keys.knownShortagesArea)
+        guard isSameArea else { return }
+
+        for (fuel, shortages) in PriceAlerts.newShortages(in: fetched, known: known) {
+            guard let message = PriceAlerts.shortageMessage(fuel: fuel, shortages: shortages) else { continue }
+            if notifyOnShortage {
+                try? await PriceAlerts.post(title: message.title, body: message.body)
+            }
+            if ntfyEnabled, ntfyShortages, ntfyConfig.isComplete {
+                do {
+                    try await ntfy.send(title: message.title, message: message.body,
+                                        click: shortages.first?.mapsURL, tags: ["warning"], to: ntfyConfig)
                 } catch {
                     errorMessage = "Versturen naar ntfy lukte niet: \(error.localizedDescription)"
                 }
@@ -211,6 +251,10 @@ final class FuelStore {
         static let refreshMinutes = "refreshMinutes"
         static let notifyOnDrop = "notifyOnDrop"
         static let thresholds = "thresholds"
+        static let notifyOnShortage = "notifyOnShortage"
+        static let ntfyShortages = "ntfyShortages"
+        static let knownShortages = "knownShortages"
+        static let knownShortagesArea = "knownShortagesArea"
         static let ntfyEnabled = "ntfyEnabled"
         static let ntfyServer = "ntfyServer"
         static let ntfyTopic = "ntfyTopic"
